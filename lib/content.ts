@@ -9,6 +9,8 @@ export const site = {
   role: "Software Engineer",
   tagline: "Software Engineer · AI · Digital Experiences",
   location: "Morocco",
+  /** Canonical URL — update here if you attach a custom domain. */
+  url: "https://portfoliowebsite-chi-bay.vercel.app",
   email: "aliadnani056@gmail.com",
   /** On the CV but deliberately not rendered on a public page. */
   phone: "+212 625 261 279",

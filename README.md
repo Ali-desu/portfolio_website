@@ -2,7 +2,7 @@
 
 Personal portfolio site. Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4.
 
-**Live:** _add the Vercel URL once deployed_
+**Live:** [portfoliowebsite-chi-bay.vercel.app](https://portfoliowebsite-chi-bay.vercel.app/)
 
 ## Motion
 

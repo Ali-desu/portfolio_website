@@ -15,13 +15,38 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = `${site.name} — ${site.role}`;
+const description = `${site.role} based in ${site.location}. I design and build modern digital experiences across software, AI and the web.`;
+
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.role}`,
-  description: `${site.role} based in ${site.location}. I design and build modern digital experiences across software, AI and the web.`,
+  metadataBase: new URL(site.url),
+  title,
+  description,
+  alternates: { canonical: "/" },
+  keywords: [
+    site.name,
+    "Software Engineer",
+    "Full-Stack Developer",
+    "Morocco",
+    "Next.js",
+    "Spring Boot",
+    "AI",
+    "RAG",
+  ],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
   openGraph: {
-    title: `${site.name} — ${site.role}`,
-    description: `${site.role} based in ${site.location}. Building software, AI and digital experiences.`,
+    title,
+    description,
     type: "website",
+    url: site.url,
+    siteName: site.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
   },
 };
 
