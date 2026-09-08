@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "@/components/ui/Logo";
 import { nav, site, socials } from "@/lib/content";
 
 export default function Footer() {
@@ -9,6 +10,7 @@ export default function Footer() {
       <div className="shell py-14">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
+            <Logo size={34} className="mb-5" />
             <p className="display text-3xl">{site.name}</p>
             <p className="mt-3 text-sm text-muted">
               {site.role}, {site.location}

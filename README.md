@@ -27,6 +27,17 @@ first paint from `localStorage`, falling back to the OS setting, so the page
 never flashes the wrong palette. The toggle itself holds no React state: both
 icons render and CSS shows the one matching the active theme.
 
+## Logo
+
+The mark is an A whose crossbar runs past both legs, matching the hairline
+rules used across the site. It exists in two places that must stay in sync:
+
+- `app/icon.svg` is the source of truth, and Next serves it as the tab icon
+- `components/ui/Logo.tsx` is the same paths inline, for the header and footer
+
+`app/favicon.ico` and `app/apple-icon.png` were rasterised from `app/icon.svg`,
+so regenerate them if the mark changes.
+
 ## Motion
 
 No animation dependency. Everything is CSS plus one `IntersectionObserver`:

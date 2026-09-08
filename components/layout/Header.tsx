@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Logo from "@/components/ui/Logo";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { nav, site } from "@/lib/content";
 import { useScrollTick } from "@/lib/useScroll";
@@ -43,11 +44,21 @@ export default function Header() {
         }`}
       >
         <div className="shell flex h-16 items-center justify-between md:h-20">
-          <Link href="/" className="group flex items-baseline gap-3">
-            <span className="text-[0.95rem] font-medium tracking-tight">
-              {site.name}
+          <Link
+            href="/"
+            aria-label={`${site.name}, home`}
+            className="group flex items-center gap-3"
+          >
+            <Logo
+              size={26}
+              className="transition-transform duration-500 group-hover:-rotate-6"
+            />
+            <span className="flex items-baseline gap-3">
+              <span className="text-[0.95rem] font-medium tracking-tight">
+                {site.name}
+              </span>
+              <span className="meta hidden sm:inline">{site.role}</span>
             </span>
-            <span className="meta hidden sm:inline">{site.role}</span>
           </Link>
 
           <div className="flex items-center gap-6">
