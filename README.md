@@ -1,22 +1,49 @@
-# Portfolio — Ali El Adnani
+# Portfolio, Ali El Adnani
 
 Personal portfolio site. Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4.
 
 **Live:** [portfoliowebsite-chi-bay.vercel.app](https://portfoliowebsite-chi-bay.vercel.app/)
 
+## Structure
+
+Multi-page rather than one long scroll:
+
+| Route | Page |
+| --- | --- |
+| `/` | Home |
+| `/work` | Project index |
+| `/work/[slug]` | One page per project, prerendered at build time |
+| `/about` | Background, experience, education, tools |
+| `/contact` | Contact details |
+
+## Theming
+
+Light and dark palettes are plain CSS custom properties on `:root` and
+`:root[data-theme="dark"]`. Tailwind reads them through `@theme inline`, so
+every utility follows the active theme without duplicated classes.
+
+An inline script in `<head>` (see `lib/theme.ts`) sets `data-theme` before
+first paint from `localStorage`, falling back to the OS setting, so the page
+never flashes the wrong palette. The toggle itself holds no React state: both
+icons render and CSS shows the one matching the active theme.
+
 ## Motion
 
-All animation is hand-rolled — no `framer-motion`, no GSAP, no animation dependency of any kind:
+No animation dependency. Everything is CSS plus one `IntersectionObserver`:
 
-- **Scroll reveals** via `IntersectionObserver` ([components/ui/Reveal.tsx](components/ui/Reveal.tsx)), with the transitions themselves in CSS
-- **Scroll-linked effects** (hero parallax, the stacking project deck, the timeline rail, the word-by-word lit statement) share a single rAF-throttled scroll listener in [lib/useScroll.ts](lib/useScroll.ts) that writes straight to the DOM, so React never re-renders while scrolling
-- **Entrance animations** are pure CSS keyframes with staggered delays, so they fire before hydration
+- Scroll reveals in `components/ui/Reveal.tsx`
+- Headline lines that rise out of a clipping box, pure CSS with staggered delays so they play before hydration
+- Page transitions in `components/layout/PageTransition.tsx`, keyed on the pathname so the animation replays on every navigation
+- `lib/useScroll.ts` shares one rAF-throttled scroll listener
 
-Everything respects `prefers-reduced-motion`, and a `<noscript>` block reveals all content if JavaScript is unavailable.
+Everything respects `prefers-reduced-motion`, and a `<noscript>` block reveals
+all content when JavaScript is unavailable.
 
 ## Editing content
 
-All copy — name, links, projects, skills, timeline — lives in one file: **[lib/content.ts](lib/content.ts)**. The components read from it, so changing text never means touching a component.
+All copy and project data live in **`lib/content.ts`**. Adding a project means
+adding one object to the `projects` array; its page, its index row and its
+metadata are generated from that.
 
 ## Running locally
 
@@ -26,6 +53,12 @@ pnpm dev      # http://localhost:3000
 ```
 
 ```bash
-pnpm build    # production build
+pnpm build
+pnpm start
 pnpm lint
 ```
+
+## Versions
+
+`v1.0.0` is tagged at the previous single-page scroll design, if it is ever
+needed: `git checkout v1.0.0`.

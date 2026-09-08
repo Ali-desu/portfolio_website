@@ -1,287 +1,432 @@
 /**
- * Every piece of copy on the site lives here.
- * Edit this file to change the portfolio — the components read from it.
+ * All copy and data for the site. Components read from here, so changing
+ * text never means editing a component.
  */
 
 export const site = {
   name: "Ali El Adnani",
-  shortName: "El Adnani",
   role: "Software Engineer",
-  tagline: "Software Engineer · AI · Digital Experiences",
-  location: "Morocco",
-  /** Canonical URL — update here if you attach a custom domain. */
-  url: "https://portfoliowebsite-chi-bay.vercel.app",
+  location: "Marrakech, Morocco",
   email: "aliadnani056@gmail.com",
-  /** On the CV but deliberately not rendered on a public page. */
+  /** On the CV but deliberately not published. */
   phone: "+212 625 261 279",
+  github: "https://github.com/Ali-desu",
+  linkedin: "https://www.linkedin.com/in/ali-el-adnani/",
+  /** Canonical URL. Update here if a custom domain is attached. */
+  url: "https://portfoliowebsite-chi-bay.vercel.app",
   available: true,
-  availableLabel: "Available for new projects",
-  year: new Date().getFullYear(),
+  availableLabel: "Available for work",
 };
 
 export const socials = [
-  { label: "GitHub", href: "https://github.com/Ali-desu" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/ali-el-adnani/" },
+  { label: "GitHub", href: site.github },
+  { label: "LinkedIn", href: site.linkedin },
 ] as const;
 
 export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Work", href: "#work" },
-  { label: "Journey", href: "#journey" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
-export const hero = {
-  eyebrow: "Software Engineer · AI · Digital Experiences",
-  /** Rendered word by word. The word matching `accentWord` gets the shimmer. */
-  headline: ["Transform your", "digital presence."],
-  accentWord: "presence.",
+export const home = {
+  /** Each string is one masked line in the hero. */
+  headline: ["Software", "engineer"],
   intro:
-    "I design and build modern digital experiences that turn ideas into meaningful products — powered by software, creativity, and AI.",
-  ctaPrimary: { label: "Explore my work", href: "#work" },
-  ctaSecondary: { label: "Let's work together", href: "#contact" },
+    "I build web applications end to end. Backend services in Java and Spring Boot, interfaces in React and Next.js, and AI features that use retrieval instead of guesswork.",
+  facts: [
+    { label: "Based in", value: "Marrakech, Morocco" },
+    { label: "Currently", value: "Available for work" },
+    { label: "Focus", value: "Full-stack, AI, data" },
+  ],
+  workIntro:
+    "Six projects, from a live storefront to a document assistant that cites its sources.",
+  aboutIntro:
+    "I finished a computer engineering degree at ENSA Marrakech in 2026. Before that I did two internships where the job was the same both times: replace a manual process with software that runs on its own.",
 };
 
 export const about = {
-  /** Reveals word by word as you scroll through it. */
-  statement:
-    "I build software end to end — the backend, the interface, and the AI in between. Most of what I've made replaced a messy spreadsheet with something people actually trust.",
-  paragraphs: [
-    "I studied computer engineering at ENSA Marrakech, then spent my internships at DXC Technology and SAMSIC doing the same thing twice: taking work that ran on manual Excel files and turning it into systems that run on their own.",
-    "On my own time I build with AI — retrieval systems, semantic image search, a medical chatbot. My rule is simple: if it can't show where the answer came from, it doesn't ship.",
-    "What I like most is when the database, the service and the screen all have to fit together. That's the work I'm looking for.",
+  intro: [
+    "I am a software engineer based in Marrakech. I studied computer engineering at ENSA Marrakech and finished in 2026.",
+    "Most of my work is full-stack. I am comfortable writing a Spring Boot service, designing the schema underneath it, and building the React interface on top. Over the last two years I have spent a lot of time on retrieval systems and other AI features, which is now the part of the work I know best.",
+    "I care about software that people actually use. Both of my internships involved replacing spreadsheets with systems, and that is the kind of problem I like: something concrete, with a person on the other end who notices when it works.",
   ],
-  stats: [
-    { value: 12, suffix: "+", label: "Projects built" },
-    { value: 5, suffix: "", label: "Years building" },
-    { value: 25, suffix: "+", label: "Technologies used" },
-  ],
-  facts: [
-    { label: "Currently", value: "Open to new projects and roles" },
-    { label: "Based in", value: "Marrakech, Morocco — working worldwide" },
-    { label: "Education", value: "Software Engineering · ENSA Marrakech" },
-    { label: "Languages", value: "Arabic · French · English" },
-    { label: "Focus", value: "Software · AI · Web · Data" },
+  principles: [
+    {
+      title: "Ship it",
+      body: "A project that runs in production teaches more than one that stays on a branch. I would rather get something small in front of people and fix it than plan it perfectly.",
+    },
+    {
+      title: "Show the source",
+      body: "For anything built on a language model, the answer needs to point at where it came from. InsightHub cites every document it uses. Without that there is no way to tell a good answer from a confident wrong one.",
+    },
+    {
+      title: "Own the whole path",
+      body: "Knowing the database, the service and the interface makes it much faster to find where something actually broke. I try to stay useful at every layer instead of specialising too early.",
+    },
   ],
 };
 
-/** Flat list for the hero ticker. */
-export const stack = [
-  "Java",
-  "Spring Boot",
-  "React",
-  "Next.js",
-  "Angular",
-  "TypeScript",
-  "Python",
-  "FastAPI",
-  "PostgreSQL",
-  "MongoDB",
-  "Elasticsearch",
-  "Kafka",
-  "Docker",
-  "LangChain",
-  "Power BI",
-];
-
-/** Grouped for the About section. */
 export const skillGroups = [
+  {
+    label: "Languages",
+    items: ["Java", "TypeScript", "Python", "JavaScript", "SQL"],
+  },
   {
     label: "Backend",
     items: [
-      "Java",
       "Spring Boot",
       "JPA / Hibernate",
       "FastAPI",
       "Flask",
-      "REST · GraphQL · SOAP",
+      "REST",
+      "GraphQL",
+      "SOAP",
       "Apache Kafka",
     ],
   },
   {
     label: "Frontend",
-    items: ["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    items: ["React", "Next.js", "Angular", "Tailwind CSS", "shadcn/ui"],
   },
   {
-    label: "AI & Data",
+    label: "AI",
     items: [
       "RAG",
-      "LangChain / LangGraph",
-      "CLIP · Transformers",
-      "Claude · OpenAI APIs",
-      "Python · Pandas",
-      "ETL / ELT",
-      "Power BI · DAX",
+      "LangChain",
+      "LangGraph",
+      "pgvector",
+      "FAISS",
+      "CLIP",
+      "Transformers",
+      "Claude and OpenAI APIs",
+    ],
+  },
+  {
+    label: "Data",
+    items: [
+      "Pandas",
+      "ETL and ELT",
+      "Dimensional modelling",
+      "Power BI",
+      "DAX",
+      "Parquet",
     ],
   },
   {
     label: "Databases",
-    items: ["PostgreSQL", "MySQL", "Oracle / PL-SQL", "MongoDB", "Elasticsearch"],
+    items: [
+      "PostgreSQL",
+      "Supabase",
+      "MySQL",
+      "Oracle PL/SQL",
+      "MongoDB",
+      "Elasticsearch",
+    ],
   },
   {
-    label: "DevOps & tooling",
-    items: ["Docker", "GitHub Actions", "Keycloak", "Git", "Linux", "JUnit / PyTest"],
+    label: "Tooling",
+    items: ["Docker", "GitHub Actions", "Keycloak", "Git", "Linux", "JUnit", "PyTest"],
   },
 ];
 
-export const expertise = [
+export const experience = [
   {
-    number: "01",
-    title: "Full-Stack Applications",
-    description:
-      "Complete products, front to back — React, Next.js or Angular over a Spring Boot core. Typed, component-driven, and built to stay maintainable long after launch.",
-    skills: ["Next.js", "React", "Spring Boot", "TypeScript"],
+    period: "Feb 2026 to Jul 2026",
+    role: "Data Engineering Intern",
+    org: "DXC Technology",
+    place: "Rabat",
+    body: [
+      "Built a reporting system that gave engineering managers a current view of sprint progress and team workload. Before it existed, the same numbers were assembled by hand in Excel every week.",
+      "The pipeline pulls from the Jira REST API, transforms through Bronze, Silver and Gold layers, and loads a galaxy schema model that Power BI reads. It refreshes daily on its own.",
+    ],
+    stack: [
+      "Python",
+      "Pandas",
+      "Jira REST API",
+      "GitHub Actions",
+      "Power Automate",
+      "Power BI",
+      "Parquet",
+    ],
   },
   {
-    number: "02",
-    title: "Backend & APIs",
-    description:
-      "Services that hold up under real traffic: REST, GraphQL and SOAP, Kafka for messaging, Keycloak for identity, and a microservice split when the domain genuinely calls for one.",
-    skills: ["Java", "Kafka", "Keycloak", "PostgreSQL"],
+    period: "Jul 2025 to Aug 2025",
+    role: "Full-Stack Developer Intern",
+    org: "SAMSIC",
+    place: "Casablanca",
+    body: [
+      "Built an application for tracking purchase orders and work orders, replacing spreadsheets that were being passed around by email.",
+      "It covers REST APIs, role based access, dynamic forms and live status tracking, with Spring Boot on the server and React on the client.",
+    ],
+    stack: ["Spring Boot", "React", "MySQL", "REST"],
+  },
+];
+
+export const education = [
+  {
+    period: "2021 to 2026",
+    role: "Software Engineering Degree",
+    org: "ENSA Marrakech",
+    place: "Computer Engineering",
+    body: [
+      "Five years covering algorithms, databases, distributed systems, networks and machine learning, with team projects throughout.",
+    ],
   },
   {
-    number: "03",
-    title: "AI Integration",
-    description:
-      "LLM features that solve a real problem instead of demoing well. Retrieval, embeddings and vector search wired in so the answers stay grounded in your data — and cite it.",
-    skills: ["RAG", "LangChain", "pgvector", "Claude API"],
+    period: "2021",
+    role: "High School Diploma",
+    org: "Abou El Abass Sebti High School",
+    place: "Physical Sciences",
+    body: [],
   },
-  {
-    number: "04",
-    title: "Data & Reporting",
-    description:
-      "Pipelines nobody has to babysit. API ingestion, layered transformation, a clean dimensional model, and dashboards that put the numbers in front of the people who decide.",
-    skills: ["Python", "ETL / ELT", "Power BI", "Automation"],
-  },
+];
+
+export const languages = [
+  { label: "Arabic", level: "Native" },
+  { label: "French", level: "Fluent" },
+  { label: "English", level: "Fluent" },
 ];
 
 export type ProjectLink = { label: string; href: string };
 
 export type Project = {
+  slug: string;
   title: string;
   year: string;
-  category: string;
-  /** Shown as a badge on the card — "Personal project" or "Team project". */
-  kind: string;
+  /** Personal project, Team project or Client project. */
+  type: string;
+  discipline: string;
+  /** One or two sentences, used on the index pages. */
   summary: string;
-  tags: string[];
-  /** One entry per repo; the card renders a link for each. */
-  links?: ProjectLink[];
-  /** Drives the card's gradient — pick any two hex colors. */
-  colors: [string, string];
+  /** Full paragraphs for the project page. */
+  overview: string[];
+  /** Concrete things I built. */
+  contribution: string[];
+  stack: string[];
+  links: ProjectLink[];
+  featured: boolean;
 };
 
 export const projects: Project[] = [
   {
-    title: "InsightHub",
+    slug: "chicaura",
+    title: "ChicAura",
     year: "2026",
-    category: "Applied AI · RAG",
-    kind: "Personal project",
+    type: "Client project",
+    discipline: "E-commerce, live in production",
     summary:
-      "A document Q&A platform that answers from your own files instead of guessing. Ingestion runs Tika → chunking → Bedrock embeddings → pgvector, HNSW handles semantic search, and every answer comes back grounded in citations through the Claude API.",
-    tags: ["Java 21", "Spring Boot", "pgvector", "AWS Bedrock", "React 19"],
-    links: [{ label: "Repository", href: "https://github.com/Ali-desu/InsightHub" }],
-    colors: ["#7c6bff", "#22d3ee"],
+      "An online jewellery store for a Moroccan brand, built with Next.js and Supabase. Bilingual in French and Arabic, with orders placed through WhatsApp.",
+    overview: [
+      "ChicAura sells stainless steel jewellery in Morocco. The site is the storefront: a catalogue split into necklaces, bracelets, earrings and sets, with prices in dirhams and a featured selection on the home page.",
+      "It runs in French and Arabic. Arabic means right to left, so the layout mirrors rather than just swapping strings, and every piece of copy lives in the translation layer instead of inside the components.",
+      "There is no checkout. In this market most orders happen over WhatsApp and payment is on delivery, so the site is built around that. Every product routes to a prefilled WhatsApp message rather than a cart. It is less conventional than a checkout flow, but it matches how the business actually sells.",
+      "Supabase holds the product data and images, so the owner can change the catalogue without a deploy.",
+    ],
+    contribution: [
+      "Built the storefront in Next.js with the App Router",
+      "Modelled products, categories and media in Supabase and wired up the client",
+      "Set up French and Arabic translation including right to left layout",
+      "Built the WhatsApp ordering flow with prefilled product messages",
+      "Handled responsive layout, image delivery and deployment on Vercel",
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Vercel",
+    ],
+    links: [{ label: "Visit the site", href: "https://chicaura.vercel.app/fr" }],
+    featured: true,
   },
   {
+    slug: "insighthub",
+    title: "InsightHub",
+    year: "2026",
+    type: "Personal project",
+    discipline: "Retrieval augmented generation",
+    summary:
+      "A document question answering platform that answers from your own files and cites the passage it used.",
+    overview: [
+      "InsightHub lets you upload documents and ask questions about them. The point of the project was the citation requirement: every answer has to name the passage it came from, so you can check it.",
+      "Ingestion runs documents through Tika, splits them into chunks, embeds them with AWS Bedrock and stores the vectors in PostgreSQL using pgvector. Search uses an HNSW index. The retrieved passages go to the Claude API, which answers only from what it was given.",
+      "That constraint made the project harder to build. It also made it usable, because a wrong answer that names its source is one you can catch.",
+    ],
+    contribution: [
+      "Built the ingestion pipeline from upload through Tika, chunking and embedding",
+      "Set up pgvector with an HNSW index for semantic search",
+      "Wrote the retrieval and prompting layer against the Claude API",
+      "Built the React front end with streaming answers and inline citations",
+      "Containerised the stack with Docker",
+    ],
+    stack: [
+      "Java 21",
+      "Spring Boot 4",
+      "PostgreSQL",
+      "pgvector",
+      "AWS S3",
+      "AWS Bedrock",
+      "Claude API",
+      "React 19",
+      "Docker",
+    ],
+    links: [{ label: "Repository", href: "https://github.com/Ali-desu/InsightHub" }],
+    featured: true,
+  },
+  {
+    slug: "ebanking-platform",
     title: "E-Banking Platform",
     year: "2025",
-    category: "Microservices · Backend",
-    kind: "Team project",
+    type: "Team project",
+    discipline: "Microservices",
     summary:
-      "A secure banking system built as microservices: transfers, a crypto wallet, QR code payments and SMS verification via Twilio, plus a LangChain support agent. Service discovery through Eureka, authentication through Keycloak, REST, SOAP and GraphQL side by side.",
-    tags: ["Spring Boot", "Angular", "Kafka", "Keycloak", "Docker"],
+      "A banking application split into microservices, covering transfers, a crypto wallet, QR payments and an AI support agent.",
+    overview: [
+      "A banking system built as separate services rather than one application. It handles account transfers, a crypto wallet, payment by QR code and SMS verification through Twilio.",
+      "Services register with Eureka and find each other through it. Keycloak handles authentication and issues the tokens the services check. Kafka carries events between services so they do not have to call each other directly.",
+      "The project exposes REST, SOAP and GraphQL side by side, which was part of the brief. A LangChain agent sits on top to answer customer support questions.",
+      "The frontend and backend live in two separate repositories, both linked below.",
+    ],
+    contribution: [
+      "Worked on the Spring Boot services and the boundaries between them",
+      "Set up Keycloak authentication and the Eureka service registry",
+      "Wired Kafka topics for events crossing service boundaries",
+      "Built parts of the Angular client",
+      "Set up Docker Compose and the GitHub Actions pipeline",
+    ],
+    stack: [
+      "Java",
+      "Spring Boot",
+      "Angular",
+      "Nx",
+      "Apache Kafka",
+      "Eureka",
+      "Keycloak",
+      "PostgreSQL",
+      "Docker Compose",
+      "GitHub Actions",
+      "LangChain",
+    ],
     links: [
       {
-        label: "Backend",
+        label: "Backend repository",
         href: "https://github.com/eBankingCorp/ebanking-app-backend",
       },
       {
-        label: "Frontend",
+        label: "Frontend repository",
         href: "https://github.com/eBankingCorp/ebanking-app-frontend",
       },
     ],
-    colors: ["#ff5f8f", "#7c6bff"],
+    featured: true,
   },
   {
+    slug: "nexus",
     title: "Nexus",
     year: "2025",
-    category: "AI · Semantic image search",
-    kind: "Team project",
+    type: "Team project",
+    discipline: "Semantic image search",
     summary:
-      "Search a photo library by describing it. CLIP turns images into visual embeddings, Elasticsearch retrieves them, Cloudinary handles the media and MongoDB the metadata — the whole thing containerised with Docker.",
-    tags: ["Next.js", "FastAPI", "Elasticsearch", "CLIP", "MongoDB"],
+      "Search an image library by describing what is in the picture, using CLIP embeddings and Elasticsearch.",
+    overview: [
+      "Nexus finds images from a description instead of relying on filenames or tags. CLIP turns both the images and the search text into vectors in the same space, so a text query can be matched against pictures directly.",
+      "Elasticsearch handles retrieval, MongoDB stores the metadata and Cloudinary serves the media. A FastAPI service runs the model and a Next.js front end sits on top.",
+      "Everything runs under Docker, so the model service, the search index and the database come up together.",
+    ],
+    contribution: [
+      "Built the FastAPI service that generates and serves CLIP embeddings",
+      "Set up the Elasticsearch index and the vector retrieval",
+      "Built the Next.js search interface",
+      "Wired Cloudinary for media and MongoDB for metadata",
+      "Containerised every service with Docker",
+    ],
+    stack: [
+      "Next.js",
+      "FastAPI",
+      "Python",
+      "CLIP",
+      "Elasticsearch",
+      "MongoDB",
+      "Cloudinary",
+      "Docker",
+    ],
     links: [{ label: "Repository", href: "https://github.com/nexus-search/nexus" }],
-    colors: ["#22d3ee", "#4ade80"],
+    featured: false,
   },
   {
+    slug: "medical-chatbot",
     title: "Medical Chatbot",
     year: "2025",
-    category: "AI · NLP",
-    kind: "Personal project",
+    type: "Personal project",
+    discipline: "Natural language processing",
     summary:
-      "A medical question-answering assistant built on BERT fine-tuned against medical data for retrieval and understanding, with Llama 2 reformulating the retrieved material into answers that read like a person wrote them.",
-    tags: ["BERT", "Llama 2", "Transformers", "Python"],
-    links: [
-      {
-        label: "Repository",
-        href: "https://github.com/Ali-desu/bert_llama2_chatbot",
-      },
+      "A medical question answering assistant. BERT handles retrieval and understanding, Llama 2 rewrites the result into an answer.",
+    overview: [
+      "The chatbot answers medical questions using two models with different jobs. A BERT model trained on medical data does the understanding and retrieval, finding the relevant material for a question.",
+      "Llama 2 then reformulates that material into a readable answer. Splitting the work this way keeps the answer anchored to retrieved content rather than generated from scratch.",
+      "I built this to learn how the two model types behave in practice, and where each one is the wrong tool for the job.",
     ],
-    colors: ["#38bdf8", "#7c6bff"],
+    contribution: [
+      "Prepared the medical dataset and fine tuned BERT on it",
+      "Built the retrieval step and the scoring around it",
+      "Wired Llama 2 in to reformulate retrieved passages",
+      "Evaluated answers against a held out set of questions",
+    ],
+    stack: ["Python", "BERT", "Llama 2", "Transformers", "PyTorch"],
+    links: [
+      { label: "Repository", href: "https://github.com/Ali-desu/bert_llama2_chatbot" },
+    ],
+    featured: false,
   },
   {
+    slug: "smart-library",
     title: "Smart Library System",
     year: "2024",
-    category: "Full-stack · Team lead",
-    kind: "Team project",
+    type: "Team project",
+    discipline: "Full-stack application",
     summary:
-      "A university library platform with an AI librarian built on LangChain, FAISS and GPT-4, JWT authentication, an admin dashboard and real-time notifications. I owned the full stack and coordinated the team.",
-    tags: ["React", "Flask", "LangChain", "FAISS", "Docker"],
+      "A university library platform with borrowing, an admin dashboard and a chatbot that answers questions about the catalogue.",
+    overview: [
+      "A management system for a university library, covering the catalogue, borrowing and returns, an admin dashboard and live notifications.",
+      "The chatbot uses LangChain with a FAISS index over the library content and GPT-4 to answer, so students can ask about availability in plain language instead of searching the catalogue themselves.",
+      "I worked across the full stack on this one and coordinated the team.",
+    ],
+    contribution: [
+      "Built the Flask backend and the SQLite data model",
+      "Built the React interface and the admin dashboard",
+      "Set up JWT authentication and role based access",
+      "Built the chatbot with LangChain, FAISS and GPT-4",
+      "Coordinated the team and the delivery",
+    ],
+    stack: [
+      "React",
+      "Flask",
+      "SQLite",
+      "LangChain",
+      "FAISS",
+      "GPT-4",
+      "Docker",
+      "Selenium",
+    ],
     links: [
       {
         label: "Repository",
         href: "https://github.com/PFS-LMS-ORG/SmartElectronicLibrary",
       },
     ],
-    colors: ["#f59e0b", "#ff5f8f"],
-  },
-];
-
-export const journey = [
-  {
-    period: "2026",
-    title: "Data Engineer",
-    org: "DXC Technology · Rabat",
-    description:
-      "Built the reporting system that replaced a manual Excel process, giving managers a live view of sprint progress and team workload. Automated the entire flow from Jira to Power BI — ingestion, a Bronze/Silver/Gold pipeline and a galaxy-schema model, refreshed daily without a single manual step.",
-  },
-  {
-    period: "2025",
-    title: "Full-Stack Developer",
-    org: "SAMSIC · Casablanca",
-    description:
-      "Delivered a Spring Boot, React and MySQL application for tracking purchase and work orders, turning scattered spreadsheets into REST APIs, role-based access, dynamic forms and real-time status tracking.",
-  },
-  {
-    period: "2021 — 2026",
-    title: "Software Engineering Degree",
-    org: "ENSA Marrakech · Computer Engineering",
-    description:
-      "Five years of software and systems engineering — algorithms, databases, distributed systems and machine learning — alongside the team projects where I learned how software actually gets shipped.",
-  },
-  {
-    period: "2021",
-    title: "High School Diploma, Physical Sciences",
-    org: "Abou El Abass Sebti High School · Marrakech",
-    description:
-      "Where the habit of taking things apart to understand them started.",
+    featured: false,
   },
 ];
 
 export const contact = {
-  heading: ["Let's build", "something great."],
-  accentWord: "great.",
-  blurb:
-    "Have a project, a role, or an idea worth exploring? I read every message and reply within a day.",
+  heading: "Get in touch",
+  body: [
+    "I am open to full-time roles and freelance work. Backend, full-stack, or anything involving retrieval and language models.",
+    "Email is the fastest way to reach me. I reply within a day.",
+  ],
 };
+
+export function projectBySlug(slug: string) {
+  return projects.find((project) => project.slug === slug);
+}

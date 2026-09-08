@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "@/components/Footer";
-import Nav from "@/components/Nav";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import PageTransition from "@/components/layout/PageTransition";
 import { site } from "@/lib/content";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,12 +17,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = `${site.name} — ${site.role}`;
-const description = `${site.role} based in ${site.location}. I design and build modern digital experiences across software, AI and the web.`;
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
+const title = `${site.name}, ${site.role}`;
+const description =
+  "Software engineer in Marrakech. I build full-stack web applications, backend services in Java and Spring Boot, and AI features built on retrieval.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title,
+  title: {
+    default: title,
+    template: `%s | ${site.name}`,
+  },
   description,
   alternates: { canonical: "/" },
   keywords: [
@@ -30,7 +43,7 @@ export const metadata: Metadata = {
     "Morocco",
     "Next.js",
     "Spring Boot",
-    "AI",
+    "Supabase",
     "RAG",
   ],
   authors: [{ name: site.name, url: site.url }],
@@ -43,39 +56,41 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_US",
   },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050507",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f2ed" },
+    { media: "(prefers-color-scheme: dark)", color: "#100f0d" },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
-      <body className="flex min-h-full flex-col bg-ink font-sans text-white">
-        {/* Without JS the reveal animations never fire, so show everything. */}
+      <head>
+        {/* Sets the palette before first paint so there is no flash. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="flex min-h-screen flex-col font-sans">
         <noscript>
-          <style>{`[data-reveal],.word-inner,.scroll-word{opacity:1!important;transform:none!important;filter:none!important}`}</style>
+          <style>{`[data-reveal],.line-mask > span,.page-enter{opacity:1!important;transform:none!important}`}</style>
         </noscript>
 
         <a
-          href="#top"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-70 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-black"
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-70 focus:border focus:border-line-strong focus:bg-paper focus:px-4 focus:py-2 focus:text-sm"
         >
           Skip to content
         </a>
 
-        <Nav />
-        <div className="flex-1">{children}</div>
+        <Header />
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>
