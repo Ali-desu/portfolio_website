@@ -2,7 +2,7 @@
 
 Personal portfolio site. Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4.
 
-**Live:** [portfoliowebsite-chi-bay.vercel.app](https://portfoliowebsite-chi-bay.vercel.app/)
+**Live:** [eladnaniali.website](https://eladnaniali.website/)
 
 ## Structure
 

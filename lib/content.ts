@@ -12,8 +12,8 @@ export const site = {
   phone: "+212 625 261 279",
   github: "https://github.com/Ali-desu",
   linkedin: "https://www.linkedin.com/in/ali-el-adnani/",
-  /** Canonical URL. Update here if a custom domain is attached. */
-  url: "https://portfoliowebsite-chi-bay.vercel.app",
+  /** Canonical URL. Feeds metadata, the sitemap and robots.txt. */
+  url: "https://eladnaniali.website",
   available: true,
   availableLabel: "Available for work",
 };
