@@ -76,12 +76,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         {/* Sets the palette before first paint so there is no flash. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
-      <body className="flex min-h-screen flex-col font-sans">
+
+        {/* Reveals every animated element when JS is unavailable. This has to
+            live in <head>: a <style> inside <noscript> is only valid there. */}
         <noscript>
           <style>{`[data-reveal],.line-mask > span,.page-enter{opacity:1!important;transform:none!important}`}</style>
         </noscript>
-
+      </head>
+      <body className="flex min-h-screen flex-col font-sans">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-70 focus:border focus:border-line-strong focus:bg-paper focus:px-4 focus:py-2 focus:text-sm"
